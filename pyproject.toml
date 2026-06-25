@@ -1,0 +1,30 @@
+[build-system]
+requires = ["setuptools>=61", "cython>=3.0", "numpy"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[project]
+name = "soledge-amcis"
+version = "0.1.0"
+description = "AMCIS — adjoint MC wall provenance for SOLEDGE-HDG"
+requires-python = ">=3.10"
+dependencies = [
+    "numpy",
+    "matplotlib",
+    "h5py",
+]
+
+[project.optional-dependencies]
+dev = ["pytest"]
+
+[project.scripts]
+amcis = "adjoint_mc.amcis_main:main"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]
